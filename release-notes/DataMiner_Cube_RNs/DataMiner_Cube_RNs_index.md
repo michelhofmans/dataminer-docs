@@ -11,10 +11,9 @@ These release notes contain all new features, enhancements, and fixes for DataMi
 
 ## DataMiner Feature Release track
 
-- [DataMiner Cube 10.2.8 release notes](xref:10_2_8_Cube_RNs)
-- DataMiner Cube 10.2.7 release notes: Coming soon!
-- Other release note documents will be added soon.
+- [DataMiner Cube 10.2.9 release notes](xref:10_2_9_Cube_RNs)
 
 ## DataMiner Main Release track
 
-- Coming soon!
+- [DataMiner Cube 10.2.0 release notes](xref:10_2_0_Cube_RNs)
+- [DataMiner Cube 10.1.0 release notes](xref:10_1_0_Cube_RNs)
