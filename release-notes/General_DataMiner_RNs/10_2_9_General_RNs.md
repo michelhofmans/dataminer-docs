@@ -53,3 +53,16 @@ Also, additional fail-safes have been built in to cope with situations where the
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
+
+#### Web services API would incorrectly no longer clear a number of its caches when the connection was lost [ID_33764]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+When the connection was lost, the web services API would incorrectly no longer clear a number of its caches.
+
+#### Dashboards app - Service definition component: Function nodes would incorrectly not display the number of Process Automation tokens in queue or in progress [ID_33848]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+<!-- Not added to 10.3.0 -->
+
+When a Process Automation definition was added to a Service definition component, the function nodes would incorrectly not display the number of tokens currently in queue or in progress.
