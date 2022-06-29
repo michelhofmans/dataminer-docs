@@ -37,7 +37,3 @@ When a version of a DVE protocol with function DVE protocols is deleted from the
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
-
-
-
-

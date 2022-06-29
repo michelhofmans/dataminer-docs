@@ -36,6 +36,16 @@ When a version of a DVE protocol with function DVE protocols is deleted from the
 
 ### Enhancements
 
+#### Cassandra Cluster Migrator: Enhanced resilience of the migration process [ID_33467] [ID_33621] [ID_33727]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+The migration process will now be executed partition by partition. This greatly enhances the overall resilience of that process.
+
+When the source database is a Cassandra database, at the end of a migration process, the Migrator tool will now automatically retry to migrate the partitions that could not be migrated the first time. Moreover, when you manually restart a migration with failed partitions, only those failed partitions will be included in the new migration attempt. The migration will no longer have to be redone from scratch.
+
+Also, additional fail-safes have been built in to cope with situations where the target Cassandra database cannot be reached.
+
 ### Fixes
 
 #### SLLogCollector would become unresponsive when the name of the process or the path where the files had to be stored contained spaces [ID_33493]

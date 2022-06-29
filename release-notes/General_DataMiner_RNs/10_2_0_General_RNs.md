@@ -18,6 +18,16 @@ uid: 10_2_0_General_RNs
 
 A number of security enhancements have been made.
 
+#### Cassandra Cluster Migrator: Enhanced resilience of the migration process [ID_33467] [ID_33621] [ID_33727]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+The migration process will now be executed partition by partition. This greatly enhances the overall resilience of that process.
+
+When the source database is a Cassandra database, at the end of a migration process, the Migrator tool will now automatically retry to migrate the partitions that could not be migrated the first time. Moreover, when you manually restart a migration with failed partitions, only those failed partitions will be included in the new migration attempt. The migration will no longer have to be redone from scratch.
+
+Also, additional fail-safes have been built in to cope with situations where the target Cassandra database cannot be reached.
+
 #### NATS: Enhancements to the NATS configuration [ID_33558]
 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.8 -->
