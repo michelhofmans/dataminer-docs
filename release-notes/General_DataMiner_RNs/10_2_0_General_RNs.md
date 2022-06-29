@@ -40,7 +40,7 @@ A number of enhancements have been made to the NATS configuration:
 
 Also, the nats-streaming-server binary has been updated to v0.24.6. However, note that it will not be updated automatically via upgrade actions. It will only be installed during fresh NATS installations or when reinstalling NATS via SLEndpointTool_Console. The previous version (v0.22.0) and the new version (v0.24.6) version are compatible and are able to communicate with each other.
 
-#### Dashboards app: Enhanced “loading” indication when state component linked to a GQI query receives an update [ID_33640]
+#### Dashboards app: Enhanced 'loading' indication when state component linked to a GQI query receives an update [ID_33640]
 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.8 -->
 
@@ -48,7 +48,25 @@ Up to now, each time a state component linked to a GQI query received an update,
 
 Also, when a query error occur, from now on, the actual error will be displayed instead of "No data".
 
+#### SLPort: Order of parameters in an HTTP session request will be identical to that in the protocol [ID_33796]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+In an HTTP session request, the order of the parameters will now always be identical to that in the protocol.
+
+#### DVE function protocol version of active functions will now be deleted when the main DVE protocol version is deleted [ID_33834]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When a version of a DVE protocol with function DVE protocols is deleted from the system while functions are active, from now on, the function DVE protocol versions associated with those active functions will also be removed from the system.
+
 ### Fixes
+
+#### SLLogCollector would become unresponsive when the name of the process or the path where the files had to be stored contained spaces [ID_33493]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
 
 #### GQI: Datetime values in retrieved booking information would incorrectly not be converted to UTC time [ID_33607]
 

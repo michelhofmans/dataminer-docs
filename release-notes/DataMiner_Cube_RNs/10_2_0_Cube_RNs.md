@@ -13,7 +13,7 @@ uid: 10_2_0_Cube_RNs
 
 ### Fixes
 
-#### SLAnalytics - Pattern matching: No “suggestion event” type alarm would be triggered in case of DVE elements [ID_32671]
+#### SLAnalytics - Pattern matching: No 'suggestion event' type alarm would be triggered in case of DVE elements [ID_32671]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.5 -->
 

@@ -19,7 +19,7 @@ uid: 10_1_0_Cube_RNs
 
 When you created, updated or deleted a tag, up to now, this would incorrectly not be communicated to the other DataMiner Agents in the DMS.
 
-#### SLAnalytics - Pattern matching: No “suggestion event” type alarm would be triggered in case of DVE elements [ID_32671]
+#### SLAnalytics - Pattern matching: No 'suggestion event' type alarm would be triggered in case of DVE elements [ID_32671]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.5 -->
 
