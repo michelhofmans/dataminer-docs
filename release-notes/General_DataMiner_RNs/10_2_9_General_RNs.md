@@ -54,6 +54,12 @@ Also, additional fail-safes have been built in to cope with situations where the
 
 While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
 
+#### SLProtocol would leak memory leak each time a parameter of a replicated element was updated [ID_33745]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+SLProtocol would leak memory each time a parameter of a replicated element was updated.
+
 #### Web services API would incorrectly no longer clear a number of its caches when the connection was lost [ID_33764]
 
 <!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->

@@ -83,3 +83,9 @@ While collecting log information, SLLogCollector would become unresponsive when 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.8 -->
 
 When a GQI query retrieved booking information, the datetime values would incorrectly not be converted to UTC time.
+
+#### SLProtocol would leak memory leak each time a parameter of a replicated element was updated [ID_33745]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+SLProtocol would leak memory each time a parameter of a replicated element was updated.
