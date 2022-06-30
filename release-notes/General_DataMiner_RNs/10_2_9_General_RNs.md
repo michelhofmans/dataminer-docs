@@ -54,6 +54,12 @@ When a version of a DVE protocol with function DVE protocols is deleted from the
 
 ### DMS web apps
 
+#### Web apps now also support parameter comments configured in Param.Message elements [ID_33784]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+When configuring a parameter in a protocol, you can add a `<Message>` element containing a comment to be displayed in a confirmation box when users change that parameter on the user interface. Up to now, this `<Message>` element was only supported by DataMiner Cube. It is now also supported by web applications like Monitoring and Dashboards.
+
 ### DMS tools
 
 ## Changes
@@ -97,7 +103,7 @@ When the connection was lost, the web services API would incorrectly no longer c
 
 When a Process Automation definition was added to a Service definition component, the function nodes would incorrectly not display the number of tokens currently in queue or in progress.
 
-### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
+#### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
