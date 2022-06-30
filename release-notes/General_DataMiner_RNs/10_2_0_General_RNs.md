@@ -58,6 +58,12 @@ Up to now, each time a state component linked to a GQI query received an update,
 
 Also, when a query error occur, from now on, the actual error will be displayed instead of "No data".
 
+#### Web apps now also support parameter comments configured in Param.Message elements [ID_33784]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When configuring a parameter in a protocol, you can add a `<Message>` element containing a comment to be displayed in a confirmation box when users change that parameter on the user interface. Up to now, this `<Message>` element was only supported by DataMiner Cube. It is now also supported by web applications like Monitoring and Dashboards.
+
 #### SLPort: Order of parameters in an HTTP session request will be identical to that in the protocol [ID_33796]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -90,7 +96,7 @@ When a GQI query retrieved booking information, the datetime values would incorr
 
 SLProtocol would leak memory each time a parameter of a replicated element was updated.
 
-### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
+#### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
