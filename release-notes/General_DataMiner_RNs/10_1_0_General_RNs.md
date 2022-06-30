@@ -43,3 +43,13 @@ While collecting log information, SLLogCollector would become unresponsive when 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 SLProtocol would leak memory each time a parameter of a replicated element was updated.
+
+#### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When you replicated an element with SNMPv3 connections, the SNMPv3 credentials of that element would incorrectly be checked. As a result, alarms like the following one would appear in the Alarm Console:
+
+```txt
+Load Element Failed: Error parsing SNMPv3 password for element: <element name>
+```

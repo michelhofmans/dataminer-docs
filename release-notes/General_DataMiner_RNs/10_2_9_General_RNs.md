@@ -16,6 +16,30 @@ uid: 10_2_9_General_RNs
 
 ### Core functionality
 
+#### Specifying a connection setup timeout per connection when creating or editing an element [ID_33053]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+When creating or editing an element, it is now possible to specify a connection setup timeout (in milliseconds) for each of the following types of connections of that element:
+
+- SSH
+- HTTP
+- Web Socket
+- Serial TCP
+- Smart-serial TCP
+- Serial SSL/TLS
+- GPIB
+
+In the *Element.xml* file of the element in question, this connection timeout setting will be stored in `Port.ConnectTimeoutTime`. See the following example.
+
+```xml
+<Port>
+    ...
+    <ConnectTimeoutTime>30000</ConnectTimeoutTime>
+    ...
+</Port>
+```
+
 #### SLPort: Order of parameters in an HTTP session request will be identical to that in the protocol [ID_33796]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -72,3 +96,13 @@ When the connection was lost, the web services API would incorrectly no longer c
 <!-- Not added to 10.3.0 -->
 
 When a Process Automation definition was added to a Service definition component, the function nodes would incorrectly not display the number of tokens currently in queue or in progress.
+
+### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When you replicated an element with SNMPv3 connections, the SNMPv3 credentials of that element would incorrectly be checked. As a result, alarms like the following one would appear in the Alarm Console:
+
+```txt
+Load Element Failed: Error parsing SNMPv3 password for element: <element name>
+```
