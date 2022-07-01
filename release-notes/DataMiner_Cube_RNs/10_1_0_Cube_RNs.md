@@ -31,6 +31,14 @@ When you created, updated or deleted a tag, up to now, this would incorrectly no
 
 From DataMiner 10.0.13 onwards, you can activate alarm monitoring of trend patterns, so that a "suggestion event" type alarm is triggered whenever a specific pattern is detected. In case of dynamic virtual elements, in some cases, no "suggestion event" type alarm would be triggered.
 
+#### Alarm Console would incorrectly keep loading while the tickets linked to the alarms were being loaded [ID_33847]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When you open DataMiner Cube, it will load the alarms and try to link the existing tickets to them so it can show the ticket information in the Alarm Console.
+
+While this process was ongoing, in some rare cases, the Alarm Console would incorrectly keep on loading. 
+
 #### System Center: Element counter on Agents > Status tab would not be set to 0 when removing all elements from a DMA [ID_33885]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
