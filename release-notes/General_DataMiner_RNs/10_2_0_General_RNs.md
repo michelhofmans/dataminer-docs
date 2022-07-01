@@ -103,6 +103,12 @@ When a GQI query retrieved booking information, the datetime values would incorr
 
 SLProtocol would leak memory each time a parameter of a replicated element was updated.
 
+#### GQI: Columns of type 'decimal' would incorrectly not be treated as columns of type 'numeric' [ID_33792]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+Columns of type "decimal" would incorrectly be treated as columns of type "string" instead of columns of type "numeric".
+
 #### Dynamic virtual elements: Problem when processing table columns containing foreign keys [ID_33810]
 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
