@@ -105,6 +105,13 @@ SLProtocol would leak memory each time a parameter of a replicated element was u
 
 When the connection was lost, the web services API would incorrectly no longer clear a number of its caches.
 
+#### GQI: Columns of type 'decimal' would incorrectly not be treated as columns of type 'numeric' [ID_33792]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+<!-- Not added to 10.3.0 -->
+
+Columns of type "decimal" would incorrectly be treated as columns of type "string" instead of columns of type "numeric".
+
 ### Dynamic virtual elements: Problem when processing table columns containing foreign keys [ID_33810]
 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->

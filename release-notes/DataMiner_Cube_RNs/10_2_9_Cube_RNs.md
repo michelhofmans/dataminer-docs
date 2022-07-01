@@ -11,6 +11,12 @@ uid: 10_2_9_Cube_RNs
 
 ## Other new features
 
+#### Trending: Prediction type selection has now moved to the context menu [ID_33861]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+In a trend graph, up to now, a drop-down list in the top-right corner allowed you to select one of the available trend prediction types or "Auto". This drop-down list has now been removed. Instead, you can now right-click the graph and select one of the available trend prediction types or "Auto" from the context menu.
+
 #### Tab layout: Closing a card tab by clicking it with the middle mouse button [ID_33883]
 
 <!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
