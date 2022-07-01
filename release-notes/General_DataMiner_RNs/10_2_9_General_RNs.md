@@ -63,6 +63,12 @@ When a version of a DVE protocol with function DVE protocols is deleted from the
 
 When configuring a parameter in a protocol, you can add a `<Message>` element containing a comment to be displayed in a confirmation box when users change that parameter on the user interface. Up to now, this `<Message>` element was only supported by DataMiner Cube. It is now also supported by web applications like Monitoring and Dashboards.
 
+#### GQI: Table columns of type 'decimal' can now also be used when filtering or aggregating data [ID_33927]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+Table columns of type "decimal" can now also be used when filtering or aggregating data.
+
 ### DMS tools
 
 ## Changes
@@ -98,6 +104,12 @@ SLProtocol would leak memory each time a parameter of a replicated element was u
 <!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
 
 When the connection was lost, the web services API would incorrectly no longer clear a number of its caches.
+
+### Dynamic virtual elements: Problem when processing table columns containing foreign keys [ID_33810]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When a table contained multiple foreign keys, invalid foreign key values referring to non-existing rows could prevent those rows from being exported to DVE child elements. This would cause alarms, trend information, subscriptions, etc. to not get updated for specific DVE elements and/or virtual functions.
 
 #### Dashboards app - Service definition component: Function nodes would incorrectly not display the number of Process Automation tokens in queue or in progress [ID_33848]
 

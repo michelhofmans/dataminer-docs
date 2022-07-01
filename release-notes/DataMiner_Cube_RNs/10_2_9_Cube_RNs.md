@@ -87,6 +87,12 @@ When trend data is often getting close to the low or high value of a data range,
 
 When, in the *Profiles* app, you edited a profile definition, a profile instance, a profile parameter or a service definition, the change would incorrectly not be validated if the item in question was not visible in the list.
 
+#### DataMiner Cube - Profiles app: No validation errors were displayed when no discrete values had been added yet for a profile parameter of type discrete [ID_33756]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+When an error occurred while configuring a profile parameter of type "discrete", up to now, that error would not be displayed on the UI when no discrete values had been added yet.
+
 #### Resources app: Warning messages were incorrectly shown in the footer when resource manager configuration requests returned error trace data [ID_33780]
 
 <!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->

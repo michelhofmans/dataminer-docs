@@ -28,13 +28,14 @@ When the source database is a Cassandra database, at the end of a migration proc
 
 Also, additional fail-safes have been built in to cope with situations where the target Cassandra database cannot be reached.
 
-#### NATS: Enhancements to the NATS configuration [ID_33558]
+#### NATS: Enhancements to the NATS configuration [ID_33558] [ID_33931]
 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.8 -->
 
 A number of enhancements have been made to the NATS configuration:
 
 - STAN clustering has been removed.
+
 - New NATSForceManualConfig option to disable the automatic reset timer in NATSCustodian.
 
     Disabling the timer can be done in one of the following ways:
@@ -76,6 +77,12 @@ In an HTTP session request, the order of the parameters will now always be ident
 
 When a version of a DVE protocol with function DVE protocols is deleted from the system while functions are active, from now on, the function DVE protocol versions associated with those active functions will also be removed from the system.
 
+#### GQI: Table columns of type 'decimal' can now also be used when filtering or aggregating data [ID_33927]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+Table columns of type "decimal" can now also be used when filtering or aggregating data.
+
 ### Fixes
 
 #### SLLogCollector would become unresponsive when the name of the process or the path where the files had to be stored contained spaces [ID_33493]
@@ -95,6 +102,12 @@ When a GQI query retrieved booking information, the datetime values would incorr
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 SLProtocol would leak memory each time a parameter of a replicated element was updated.
+
+#### Dynamic virtual elements: Problem when processing table columns containing foreign keys [ID_33810]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When a table contained multiple foreign keys, invalid foreign key values referring to non-existing rows could prevent those rows from being exported to DVE child elements. This would cause alarms, trend information, subscriptions, etc. to not get updated for specific DVE elements and/or virtual functions.
 
 #### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
 
