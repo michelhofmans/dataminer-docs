@@ -16,33 +16,6 @@ uid: 10_2_9_General_RNs
 
 ### Core functionality
 
-#### Specifying a connection setup timeout per connection when creating or editing an element [ID_33053] [ID_33248]
-
-<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
-
-When creating or editing an element, it is now possible to specify a connection setup timeout (in milliseconds) for each of the following types of connections of that element:
-
-- SSH
-- HTTP
-- Web Socket
-- Serial TCP
-- Smart-serial TCP
-- Serial SSL/TLS
-- GPIB
-
-In the *Element.xml* file of the element in question, this connection timeout setting will be stored in `Port.ConnectTimeoutTime`. See the following example.
-
-```xml
-<Port>
-    ...
-    <ConnectTimeoutTime>30000</ConnectTimeoutTime>
-    ...
-</Port>
-```
-
-> [!NOTE]
-> When, in DataMiner Cube, you export element data to a CSV file, this new setting will also be included in the exported file.
-
 #### SLPort: Order of parameters in an HTTP session request will be identical to that in the protocol [ID_33796]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -93,6 +66,12 @@ Also, additional fail-safes have been built in to cope with situations where the
 
 While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
 
+#### Failover: SLNet would return old configuration when that configuration was being updated [ID_33619]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+When SLDataMiner or SLDMS requested the Failover configuration from SLNet while that configuration was being updated, in some rare cases, SLNet would incorrectly return the old configuration.
+
 #### SLProtocol would leak memory leak each time a parameter of a replicated element was updated [ID_33745]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -129,6 +108,13 @@ When a table contained multiple foreign keys, invalid foreign key values referri
 <!-- Not added to 10.3.0 -->
 
 When a Process Automation definition was added to a Service definition component, the function nodes would incorrectly not display the number of tokens currently in queue or in progress.
+
+#### Web apps: No group row would appear when you selected a single item in a list view [ID_33858]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+<!-- Not added to 10.3.0 -->
+
+When you selected a single item in a list view, in some cases, no group row would appear.
 
 #### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
 
