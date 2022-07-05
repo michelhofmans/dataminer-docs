@@ -68,7 +68,7 @@ While collecting log information, SLLogCollector would become unresponsive when 
 
 #### Failover: SLNet would return old configuration when that configuration was being updated [ID_33619]
 
-<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 When SLDataMiner or SLDMS requested the Failover configuration from SLNet while that configuration was being updated, in some rare cases, SLNet would incorrectly return the old configuration.
 
