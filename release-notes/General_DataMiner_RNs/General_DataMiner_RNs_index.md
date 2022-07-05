@@ -22,3 +22,4 @@ These release notes contain all new features, enhancements, and fixes for the co
 
 - [DataMiner 10.2.0 release notes](xref:10_2_0_General_RNs)
 - [DataMiner 10.1.0 release notes](xref:10_1_0_General_RNs)
+- [DataMiner 10.0.0 release notes](xref:10_0_0_General_RNs)

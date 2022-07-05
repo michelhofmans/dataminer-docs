@@ -7,9 +7,6 @@ uid: 10_1_0_General_RNs
 > [!IMPORTANT]
 > We are still working on this release. Some release notes may still be modified or moved to a later release. Check back soon for updates!
 
-> [!NOTE]
-> For release notes related to DataMiner Cube, see [DataMiner Cube 10.2.9 release notes](xref:10_2_9_Cube_RNs).
-
 ## Changes in DataMiner 10.1.0 CU18
 
 ### Enhancements
@@ -44,6 +41,12 @@ While collecting log information, SLLogCollector would become unresponsive when 
 
 SLProtocol would leak memory each time a parameter of a replicated element was updated.
 
+#### Problem with SLElement when resolving foreign keys took a long time and the the element debug log level was equal to or higher than 1 [ID_33826]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When the element debug log level was equal to or higher than 1, an error could occur in SLElement when resolving foreign keys took a long time. 
+
 #### SNMPv3 credentials would incorrectly be checked when replicating an element with SNMPv3 connections [ID_33859]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -53,3 +56,25 @@ When you replicated an element with SNMPv3 connections, the SNMPv3 credentials o
 ```txt
 Load Element Failed: Error parsing SNMPv3 password for element: <element name>
 ```
+
+#### Protocols: Additional connections with a 'Type' defined would incorrectly be ignored [ID_33941]
+
+<!-- Main Release Version 10.0.0 [CU22]/10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+Additional connections that had a `<Type>` defined would incorrectly no longer be taken into account.
+
+In the following example, the second connection would incorrectly be ignored.
+
+```xml
+<Connections>
+    <Connection id="0" name="HTTP Connection">
+        <Type>http</Type>
+        ...
+    </Connection>
+    <Connection id="1" name="WebSocket Interface">
+        <Type>http</Type>
+        ...
+```
+
+> [!NOTE]
+> Specifying a type with `<Type>` for one connection and specifying a type with e.g. `<Http>` for another connection is not supported.
