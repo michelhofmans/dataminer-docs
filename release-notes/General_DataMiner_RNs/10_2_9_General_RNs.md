@@ -76,12 +76,6 @@ Also, additional fail-safes have been built in to cope with situations where the
 
 While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
 
-#### Failover: SLNet would return old configuration when that configuration was being updated [ID_33619]
-
-<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
-
-When SLDataMiner or SLDMS requested the Failover configuration from SLNet while that configuration was being updated, in some rare cases, SLNet would incorrectly return the old configuration.
-
 #### SLProtocol would leak memory leak each time a parameter of a replicated element was updated [ID_33745]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -151,3 +145,9 @@ When you replicated an element with SNMPv3 connections, the SNMPv3 credentials o
 ```txt
 Load Element Failed: Error parsing SNMPv3 password for element: <element name>
 ```
+
+#### DataMiner upgrade: VerifyNatsRunning prerequisite could fail due to SLCloudBridge.dll having been renamed [ID_33875]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+During a DataMiner upgrade, the *VerifyNatsRunning* prerequisite could fail due to the *SLCloudBridge.dll* file having been renamed to *SLMessageBroker.dll* in DataMiner versions 10.2.0/10.1.5.
