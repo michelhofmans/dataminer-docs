@@ -28,6 +28,16 @@ In an HTTP session request, the order of the parameters will now always be ident
 
 When a version of a DVE protocol with function DVE protocols is deleted from the system while functions are active, from now on, the function DVE protocol versions associated with those active functions will also be removed from the system.
 
+#### New BPA test 'Verify Cloud DxM Version' [ID_33956]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+This new BPA test checks if the minimum required version is installed for all DxMs in the system.
+
+It is available from DataMiner 10.2.9 and 10.3.0 onwards. You can run it in System Center (on the *Agents > BPA* tab), and it also runs automatically when you upgrade to 10.2.9/10.3.0 or higher.
+
+For more information, see [DataMiner Dojo](https://community.dataminer.services/documentation/verify-cloud-dxm-version/).
+
 ### DMS web apps
 
 #### Web apps now also support parameter comments configured in Param.Message elements [ID_33784]
