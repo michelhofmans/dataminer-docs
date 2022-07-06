@@ -28,16 +28,6 @@ In an HTTP session request, the order of the parameters will now always be ident
 
 When a version of a DVE protocol with function DVE protocols is deleted from the system while functions are active, from now on, the function DVE protocol versions associated with those active functions will also be removed from the system.
 
-#### New BPA test 'Verify Cloud DxM Version' [ID_33956]
-
-<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
-
-This new BPA test checks if the minimum required version is installed for all DxMs in the system.
-
-It is available from DataMiner 10.2.9 and 10.3.0 onwards. You can run it in System Center (on the *Agents > BPA* tab), and it also runs automatically when you upgrade to 10.2.9/10.3.0 or higher.
-
-For more information, see [DataMiner Dojo](https://community.dataminer.services/documentation/verify-cloud-dxm-version/).
-
 ### DMS web apps
 
 #### Web apps now also support parameter comments configured in Param.Message elements [ID_33784]
@@ -70,11 +60,25 @@ Also, additional fail-safes have been built in to cope with situations where the
 
 ### Fixes
 
+#### Problem with SLProtocol when stopping elements or when testing protocol connections [ID_33407]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When an element was stopped, its core CProtocol object would get cleared but not entirely deleted. This would cause SLProtocol to leak each time an element was started and stopped.
+
+Also, when a protocol connection was tested, the CProtocol object created in SLProtocol for that test would neither get cleared nor deleted when the connection test had finished. In other words, the element would not get unloaded. This would cause SLProtocol to leak each time a protocol connection was tested.
+
 #### SLLogCollector would become unresponsive when the name of the process or the path where the files had to be stored contained spaces [ID_33493]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 While collecting log information, SLLogCollector would become unresponsive when the name of the process or the path where the collected files had to be stored contained spaces.
+
+#### Run-time errors due to MessageBrokerReconnectThread problems in SLCloudBridge [ID_33716]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+In some cases, run-time errors could occur due to MessageBrokerReconnectThread problems in the SLCloudBridge process.
 
 #### SLProtocol would leak memory leak each time a parameter of a replicated element was updated [ID_33745]
 
@@ -151,3 +155,14 @@ Load Element Failed: Error parsing SNMPv3 password for element: <element name>
 <!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
 
 During a DataMiner upgrade, the *VerifyNatsRunning* prerequisite could fail due to the *SLCloudBridge.dll* file having been renamed to *SLMessageBroker.dll* in DataMiner versions 10.2.0/10.1.5.
+
+#### Certain types of alarms could affect and degrade an SLA [ID_33899]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When an alarm of one the following types was generated, in some cases, that alarm could affect and degrade an SLA or be added to the list of active alarms for that SLA (i.e. enhanced service):
+
+- Information Event
+- Suggestion Event
+- Error Alarm
+- Notice Alarm

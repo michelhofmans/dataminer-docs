@@ -117,7 +117,13 @@ When a session variable (e.g. YAxisResources) was updated in an embedded Resourc
 
 When you open DataMiner Cube, it will load the alarms and try to link the existing tickets to them so it can show the ticket information in the Alarm Console.
 
-While this process was ongoing, in some rare cases, the Alarm Console would incorrectly keep on loading. 
+While this process was ongoing, in some rare cases, the Alarm Console would incorrectly keep on loading.
+
+#### Alarm Console: Problem when loading [ID_33860]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+In some cases, an exception could be thrown while the Alarm Console was loading.
 
 #### System Center: Element counter on Agents > Status tab would not be set to 0 when removing all elements from a DMA [ID_33885]
 

@@ -29,6 +29,14 @@ When a version of a DVE protocol with function DVE protocols is deleted from the
 
 ### Fixes
 
+#### Problem with SLProtocol when stopping elements or when testing protocol connections [ID_33407]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When an element was stopped, its core CProtocol object would get cleared but not entirely deleted. This would cause SLProtocol to leak each time an element was started and stopped.
+
+Also, when a protocol connection was tested, the CProtocol object created in SLProtocol for that test would neither get cleared nor deleted when the connection test had finished. In other words, the element would not get unloaded. This would cause SLProtocol to leak each time a protocol connection was tested.
+
 #### SLLogCollector would become unresponsive when the name of the process or the path where the files had to be stored contained spaces [ID_33493]
 
 <!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
@@ -56,3 +64,14 @@ When you replicated an element with SNMPv3 connections, the SNMPv3 credentials o
 ```txt
 Load Element Failed: Error parsing SNMPv3 password for element: <element name>
 ```
+
+#### Certain types of alarms could affect and degrade an SLA [ID_33899]
+
+<!-- Main Release Version 10.1.0 [CU18]/10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When an alarm of one the following types was generated, in some cases, that alarm could affect and degrade an SLA or be added to the list of active alarms for that SLA (i.e. enhanced service):
+
+- Information Event
+- Suggestion Event
+- Error Alarm
+- Notice Alarm
