@@ -86,7 +86,7 @@ When the connection was lost, the web services API would incorrectly no longer c
 
 #### Service & Resource Management: Child DVE element would not get activated when the main DVE element was in an error state [ID_33787]
 
-<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 When you tried to create a booking with a child DVE element linked to a main DVE element in an error state, the child DVE element would not automatically be activated, causing the booking to fail. Moreover, SLNet would not try to activate this child DVE element, causing subsequent bookings needing that same child DVE element to also fail, even if the main element had already recovered from the error state in the meantime.
 
@@ -101,6 +101,16 @@ Columns of type "decimal" would incorrectly be treated as columns of type "strin
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
 
 When a table contained multiple foreign keys, invalid foreign key values referring to non-existing rows could prevent those rows from being exported to DVE child elements. This would cause alarms, trend information, subscriptions, etc. to not get updated for specific DVE elements and/or virtual functions.
+
+#### SLAnalytics: Error messages could get added to the log file due to a problem with the automatic incident tracking algorithm [ID_33820]
+
+<!-- Main Release Version 10.3.0 - Feature Release Version 10.2.9 -->
+
+Due to a problem with the automatic incident tracking algorithm, error messages similar to the following one could incorrectly get added to the SLAnalytics log file:
+
+```txt
+2022/06/08 23:54:36.684|SLAnalytics|Counter.h(61): containers::Counter<ServiceInfo>::decrease)|ERR|0|Decreasing counter for key that is not in the map
+```
 
 #### Problem with SLElement when resolving foreign keys took a long time and the the element debug log level was equal to or higher than 1 [ID_33826]
 

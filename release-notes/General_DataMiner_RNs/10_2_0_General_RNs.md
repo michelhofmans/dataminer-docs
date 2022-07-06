@@ -106,6 +106,12 @@ When SLDataMiner or SLDMS requested the Failover configuration from SLNet while 
 
 SLProtocol would leak memory each time a parameter of a replicated element was updated.
 
+#### Service & Resource Management: Child DVE element would not get activated when the main DVE element was in an error state [ID_33787]
+
+<!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
+
+When you tried to create a booking with a child DVE element linked to a main DVE element in an error state, the child DVE element would not automatically be activated, causing the booking to fail. Moreover, SLNet would not try to activate this child DVE element, causing subsequent bookings needing that same child DVE element to also fail, even if the main element had already recovered from the error state in the meantime.
+
 #### GQI: Columns of type 'decimal' would incorrectly not be treated as columns of type 'numeric' [ID_33792]
 
 <!-- Main Release Version 10.2.0 [CU6] - Feature Release Version 10.2.9 -->
