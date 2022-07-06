@@ -12,6 +12,7 @@ uid: Part7Reference
 - [DataMiner metrics](xref:dataminer_metrics)
 - [Frequently asked questions](xref:faq)
 - [Glossary](xref:glossary)
+- [Support Services terms](xref:Support)
 
 > [!NOTE]
 > For more information on Visio shape data fields, options, placeholders, and dynamic table filter syntax, see [Reference](xref:Reference).
