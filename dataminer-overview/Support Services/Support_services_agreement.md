@@ -126,7 +126,7 @@ These Terms are always supplementary to and conditional upon the acceptance of S
 
 ### Precedence
 
-In the event of conflict between the Support Services Terms and this Schedule 1 – Continuity, then the provisions of this Schedule 1 – Continuity shall prevail in relation to the clauses contained in the Support Services Terms.
+In the event of conflict between the Support Services Terms and this Schedule 1 – Support Plan, then the provisions of this Schedule 1 – Support Plan shall prevail in relation to the clauses contained in the Support Services Terms.
 
 ### Issue priorities
 
