@@ -25,10 +25,11 @@ To do so:
 
    - **Host**: The name or IP of the LDAP server.
    - **Port**: The port to connect to the LDAP server.
-   - **Authentication type**: The authentication method to access the LDAP server. The following authentication types are available: *Anonymous*, *Max*, *Member System*, *Password*, *SASL*, and *Simple*.
+   - **Authentication type**: The authentication method to access the LDAP server. The following authentication types are supported: *Anonymous* and *Simple*.
    - **Naming context**: A suffix that identifies the top entry of the LDAP hierarchy.
+   - **Non-domain LDAP**: Available from DataMiner 10.2.0 [CU16]/10.3.0 [CU4]/10.3.6<!--  RN 35782 -->. An LDAP server that is not Windows Active Directory. This will be used to determine if DataMiner can subscribe to change notifications of the LDAP server, a feature that is only supported by Active Directory. DataMiner will only sync changes with a non-domain LDAP server through the *ReloadLDAP.js* script, which runs on an hourly basis through the *Skyline DataMiner LDAP Resync* scheduled task in Windows.
    - **Referral configured**: Available from DataMiner 10.1.0 [CU11]/10.2.2 onwards. To use referrals to retrieve users from another domain in case these are part of a user group in the DataMiner domain, select this option. This means that when information is asked from the DataMiner domain about a different domain, the request is automatically forwarded. If you do not select this option, instead a connection is made with the other Domain Controller and the latter is queried directly.
-   - **SSL/TLS**: Available from DataMiner 10.1.0 [CU11]/10.2.2 onwards. Select this option if you want DataMiner to use SSL/TLS when connecting to the LDAP server.
+   - **SSL/TLS**: Available from DataMiner 10.1.0 [CU11]/10.2.2 onwards. Select this option if you want DataMiner to use SSL/TLS when connecting to the LDAP server. When using SSL/TLS, make sure that the name or IP configured in **Host** matches the **Common Name** or an entry from the **Subject Alternative Names** in the certificate presented by the LDAP server.
    - **Use fully qualified domain name (FQDN)**: When this option is selected, the full user names will be retrieved by means of LDAP. Otherwise, full user names will be retrieved by means of NetAPI instead.
    - **User name**: The user name to connect to the LDAP server, if necessary.
    - **Password**: The password to connect to the LDAP server, if necessary.
@@ -53,8 +54,10 @@ To do so:
    - **Description**: The description of the group.
    - **Filter**: The LDAP search filter to find all groups. Note that in XML ampersands must be encoded as “&amp;”.
 
-    > [!NOTE]
-    > If a setting is left empty, the default setting will be applied.
+   > [!NOTE]
+   >
+   > - If a setting is left empty, the default setting will be applied.
+   > - If you change any of these settings, this change will only be applied to the DataMiner Agent you are connected to. The change is not synced with the rest of the cluster.
 
 1. Click the *Apply* button in the lower right corner.
 
@@ -177,22 +180,11 @@ The following example shows how Global Telecom Company (“GTC”) has configure
   > [!NOTE]
   > This timeout applies to every individual LDAP query. As a result, a request to refresh all groups (which consists of multiple requests) could have a total timeout that is much larger than the configured value.
 
-## Automatic refresh of group membership and user information
+## Automatic updates of group membership and user information
 
-When using Active Directory, group and user data are refreshed automatically. However, for versions of DataMiner prior to DataMiner 7.5, if you are using an LDAP-compatible directory other than Active Directory and you want to have group and user data refreshed automatically, you should create a scheduled task that executes a JavaScript file containing the following code:
+Prior to DataMiner DataMiner 10.1.9/10.2.0, when Active Directory is used, DataMiner automatically receives updates to group and user data whenever changes occur in the domain. You can disable this by setting the *notifications* attribute of the LDAP tag to false (*\<LDAP notifications="false" />*) in the *DataMiner.xml* file.
 
-```txt
-var localDMS = new ActiveXObject("SLDMS.DMS");
-var localReturn;
-localDMS.Notify(92 /*DMS_REFRESH_LDAP*/, 0, "", "", localReturn);
-```
-
-> [!NOTE]
-> - The frequency with which the scheduled task should be executed depends on the number of users and groups in your domain. You could e.g. set the task to be executed once a day.
-> - From DataMiner 7.5 onwards, an automatic hourly refresh has been implemented, so it is no longer necessary to create this scheduled task.
-> - From DataMiner 9.5.0/9.0.3 onwards, when Active Directory is used, by default DataMiner automatically receives updates whenever changes occur in the domain. You can disable this by setting the *notifications* attribute of the LDAP tag to false (*\<LDAP notifications="false" />*) in the *DataMiner.xml* file.
-> - From DataMiner 10.1.9/10.2.0 onwards, LDAP notification behavior is disabled by default, and instead the LDAP system is polled on an hourly basis. Set the *notifications* attribute of the LDAP tag to true to enable this behavior again.
->
+From DataMiner 10.1.9/10.2.0 onwards, LDAP notification behavior is disabled by default. Instead, the LDAP system is polled on an hourly basis. Set the *notifications* attribute of the LDAP tag to "true" to enable this behavior again.
 
 ## Active Directory Forest with multiple domains
 

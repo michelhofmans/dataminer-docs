@@ -50,15 +50,15 @@ To specify a different DMA in a DMS to connect to:
 
 1. Expand the *Agent* section, select the DMA and click *Save*.
 
-## Connecting to a DMS using URL arguments
+## Connecting to a DMS using arguments
 
-To connect to a DMS using specific URL arguments:
+To connect to a DMS using specific arguments:
 
 1. Hover the mouse over the tile representing this DMS and click “...” in the top-right corner.
 
-1. Expand the *Advanced* section, specify the URL arguments and click *Save*.
+1. Expand the *Advanced* section, specify the arguments and click *Save*.
 
-For more information on the possible URL arguments, see [Options for opening DataMiner Cube](xref:Options_for_opening_DataMiner_Cube).
+For more information on the possible arguments, see [Arguments for DataMiner Cube](xref:Options_for_opening_DataMiner_Cube).
 
 ## Configuring whether to connect with HTTPS only
 
@@ -121,7 +121,18 @@ To view logging for the DataMiner Cube start window:
 
 1. Select *View logging*.
 
-## Checking the software version for the start window
+## Managing the software version for the start window
+
+When you connect to a DataMiner server, the correct version of the Cube start window will automatically be downloaded from that server. If an update is installed on the server, that new version of the Cube start window will automatically be used.
+
+The Cube start window also checks the servers you connect to for new software versions. It will also periodically check <https://dataminer.services> for a new version. This check is triggered by a task in Windows Task Scheduler, which is created when the Cube start window is installed. The task is created in the `DataMiner Cube` folder and is named *Update DataMiner Cube_*, followed by the user ID.
+
+This scheduled task can be edited to change the interval or time or to completely disable the background updates (by disabling the task). To reset the task to the default settings, simply delete the task and open the Cube start window. The scheduled task will automatically be created again.
+
+> [!NOTE]
+> Background updates (triggered by the Windows Task Scheduler) for the Cube start window have a phased rollout. This means not all clients will be updated at the same time. Different clients will receive the update over a time period of a few days. However, you can force the start window to update to the latest available version by clicking the cogwheel button in the lower right corner and selecting *Check for updates*.
+
+### Checking the software version of the start window
 
 From DataMiner 10.2.6/10.3.0 onwards, you can check which software version the start window currently uses.
 
@@ -130,3 +141,11 @@ To do so:
 1. Click the cogwheel icon in the lower right corner of the start window.
 
 1. Select *About*.
+
+### Manually triggering an update of the start window
+
+Do one of the following:
+
+- Execute the above-mentioned scheduled task.
+
+- Click the cogwheel icon in the lower right corner of the start window, and select *Check for updates*.

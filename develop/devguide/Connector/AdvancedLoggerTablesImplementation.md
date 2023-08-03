@@ -14,8 +14,8 @@ To implement a logger table, perform the following steps:
        <Description>Traps Logger</Description>
        <Type>array</Type>
        <ArrayOptions index="0" options="database">
-          <ColumnOption idx="0" pid="5201" type="retrieved" value="" options="" />
-          <ColumnOption idx="1" pid="5202" type="retrieved" value="" options="" />
+          <ColumnOption idx="0" pid="5201" type="retrieved" options="" />
+          <ColumnOption idx="1" pid="5202" type="retrieved" options="" />
          ...
        </ArrayOptions>
       ...
@@ -30,8 +30,8 @@ To implement a logger table, perform the following steps:
        <Description>Traps Logger</Description>
        <Type>array</Type>
        <ArrayOptions index="0" options="database">
-          <ColumnOption idx="0" pid="5201" type="retrieved" value="" options="" />
-          <ColumnOption idx="1" pid="5202" type="retrieved" value="" options="" />
+          <ColumnOption idx="0" pid="5201" type="retrieved" options="" />
+          <ColumnOption idx="1" pid="5202" type="retrieved" options="" />
          ...
        </ArrayOptions>
        <Database>
@@ -56,26 +56,19 @@ To implement a logger table, perform the following steps:
        <Name>sip</Name>
        <Description>Source IP (Trap Log)</Description>
        <Information>
-          <Text>Trap Log Source IP</Text>
-          <Subtext></Subtext>
-          <Includes>
-             <Include>range</Include>
-             <Include>steps</Include>
-             <Include>time</Include>
-             <Include>units</Include>
-          </Includes>
+          <Subtext>Trap Log Source IP</Subtext>
        </Information>
        <Type>read</Type>
        <Interprete>
           <RawType>other</RawType>
-          <LengthType>next param</LengthType>
           <Type>string</Type>
+          <LengthType>next param</LengthType>
        </Interprete>
        <Database>
           <ColumnDefinition>VARCHAR(20)</ColumnDefinition>
        </Database>
        <Display>
-          <RTDisplay>false</RTDisplay>
+          <RTDisplay>true</RTDisplay>
        </Display>
        <Measurement>
           <Type>string</Type>
@@ -131,30 +124,23 @@ To implement a logger table, perform the following steps:
 
     ```xml
     <Param id="5202" trending="false">
-       <Name>traplogdatabasetimestamp</Name>
+       <Name>ts</Name>
        <Description>Database Timestamp (Trap Log)</Description>
        <Information>
-          <Text>Trap Log Database Timestamp</Text>
           <Subtext>This is the principal timestamp used in the database.</Subtext>
-          <Includes>
-             <Include>range</Include>
-             <Include>steps</Include>
-             <Include>time</Include>
-             <Include>units</Include>
-          </Includes>
        </Information>
-          <Type>read</Type>
+       <Type>read</Type>
        <Interprete>
           <RawType>other</RawType>
-          <LengthType>next param</LengthType>
           <Type>string</Type>
+          <LengthType>next param</LengthType>
        </Interprete>
        <Database>
           <ColumnDefinition>DATETIME</ColumnDefinition>
           <Partition partitionsToKeep="7">day</Partition>
        </Database>
        <Display>
-          <RTDisplay>false</RTDisplay>
+          <RTDisplay>true</RTDisplay>
        </Display>
        <Measurement>
           <Type>string</Type>
@@ -169,14 +155,15 @@ To implement a logger table, perform the following steps:
     - The expected format is as follows: 'YYYY-MM-DD HH:MM:SS'. In a QAction, you can obtain this format for a given DateTime instance using the following code:
 
       ```csharp
-      string datetime = DateTime.Now.ToString("G", CultureInfo.CreateSpecificCulture("fr-CA"));
+      string datetime = DateTime.UtcNow.ToString("G", CultureInfo.CreateSpecificCulture("fr-CA"));
       ```
 
+    - DateTime values should be inserted in UTC.
     - It is not strictly necessary to include a column in a logger table used for partitioning. However, it is strongly advised to do so, as otherwise the table will not automatically remove old data.
 
     - Partitioning in Cassandra is supported from DataMiner version 9.0.0 (RN12170) onwards. If ColumnDefinition is set to "DATETIME" and the Partition tag is set, Cassandra will use a TTL with the specified time. (See [Time to live](xref:AdvancedDataMinerDataPersistenceNoSqlCassandra#time-to-live).)
 
-      From DataMiner version 9.5.7 (RN 16738) onwards, you can specify the TTL of a logger table column via the Partition tag on any column. This is also supported for Elasticsearch.
+      From DataMiner version 9.5.7 (RN 16738) onwards, you can specify the TTL of a logger table column via the Partition tag on any column. This is also supported for the indexing database.
 
       ```xml
       <Param id="1003" trending="false">
@@ -213,11 +200,11 @@ To implement a logger table, perform the following steps:
 > [!NOTE]
 > In regular tables, performing an AddRow specifying a key that already exists does not change the row data. This is not the case for logger tables, which will update the row.
 
-## Elasticsearch logger tables
+## Indexed logger tables
 
-From DataMiner 9.6.4 (RN 13552) onwards, it is possible to store a logger table in Elasticsearch instead of Cassandra.
+From DataMiner 9.6.4 (RN 13552) onwards, it is possible to store a logger table in the indexing database instead of Cassandra.
 
-To indicate that a logger table should be stored in Elasticsearch instead of Cassandra, set the [IndexingOptions@enabled](xref:Protocol.Params.Param.Database.IndexingOptions-enabled) attribute to true:
+To indicate that a logger table should be stored in the indexing database instead of Cassandra, set the [IndexingOptions@enabled](xref:Protocol.Params.Param.Database.IndexingOptions-enabled) attribute to true:
 
 ```xml
 <Database>
@@ -225,14 +212,19 @@ To indicate that a logger table should be stored in Elasticsearch instead of Cas
 </Database>
 ```
 
+When logger tables are stored the indexing database, the following restrictions apply:
+
+- The columnName must not start with `-`, `_`, or `+`.
+- The columnName must not include `\`, `/`, `*`, `?`, `"`, `<`, `>`, " " (space character), `,`, `#`, `.`, or `:`.
+
 > [!NOTE]
 >
-> - Elasticsearch has a background process that will check for all expired documents and add them to a bulk delete request. This means records may stay longer (but never shorter) than the specified TTL time.
-> - Updating rows is an expensive operation in Elasticsearch.
+> - The indexing database has a background process that will check for all expired documents and add them to a bulk delete request. This means records may stay longer (but never shorter) than the specified TTL time.
+> - Updating rows is an expensive operation in the indexing database.
 
 ### Infinite TTL
 
-From DataMiner 9.6.4 (RN 19993) onwards, in order to prevent indices from rolling over in Elasticsearch, it is possible to specify an infinite TTL.
+From DataMiner 9.6.4 (RN 19993) onwards, in order to prevent indices from rolling over in the indexing database, it is possible to specify an infinite TTL.
 
 ```xml
 <Database>
@@ -245,7 +237,7 @@ From DataMiner 9.6.4 (RN 19993) onwards, in order to prevent indices from rollin
 >
 > - The partitionsToKeep attribute value is ignored when Partition is set to “infinite”.
 > - The column does not need to be a datetime column. Any column type is supported.
-> - The value "infinite" only works on tables with IndexingOptions@enabled = true (i.e. logger tables stored in Elasticsearch).
+> - The value "infinite" only works on tables with IndexingOptions@enabled = true (i.e. logger tables stored in the indexing database).
 
 ## Designing logger tables
 
@@ -263,6 +255,7 @@ In order to make a protocol compatible with both RDBMS (SQL) and Cassandra, and 
 - If the rows in the logger table should only be added and never overwritten, use an auto-increment PK for the parameter table. If you do so, DataMiner does not need to scan the entire table first to check if a row already exists, which allows a higher insertion rate.
 - Do not choose the auto-increment PK in DataMiner as partition key. This would lead to a very high cardinality and would mean that you would have to know beforehand what this value is before being able to query the row.
 - AddRow calls are blocking calls, meaning there is no advantage to add rows multi-threaded. It will even have the downside that threads will start to block each other and new threads are created to try to compensate. Therefore, it is better to have one thread running that gets items to be added from a ConcurrentQueue.
+- DateTime values should be inserted in UTC.
 
 ## See also
 

@@ -3,14 +3,35 @@
     {
       "src": [
         {
-          "files": [
-            "src/**.csproj"
+            "files": [
+                "src/**.csproj",
+                "assemblies/**.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Core.DataMinerSystem.Automation.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Core.DataMinerSystem.Common.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Core.DataMinerSystem.Protocol.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Core.Matrix.Protocol.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Core.InterAppCalls.Common.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.Interfaces.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.Rates.Common.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.Rates.Protocol.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.SafeConverters.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.SNMP.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.SNMP.Traps.Protocol.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.Table.ContextMenu.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Utils.InteractiveAutomationScriptToolkit.dll",
+                "src/NuGetPackages/bin/Release/net48/Skyline.DataMiner.Core.AppPackageCreator.dll"
+            ],
+          "exclude": [
+            "**/obj/**",
+            "_site/**"
           ]
         }
-      ],
+	  ],
       "dest": "develop/api/types",
       "disableDefaultFilter": false,
-      "filter": "filterConfig.yml"
+      "disableGitFeatures": false,
+	  "filter": "filterConfig.yml",
+	  "memberLayout": "separatePages"
     }
   ],
   "build": {
@@ -21,42 +42,47 @@
           "dataminer-overview/**/toc.yml",
           "user-guide/**.md",
           "user-guide/**/toc.yml",
+          "release-notes/**.md",
+          "release-notes/**/toc.yml",
           "develop/**.md",
           "develop/toc.yml",
-		  "develop/**/toc.yml",
-		  "develop/api/types/*.yml",
+		      "develop/**/toc.yml",
+		      "develop/api/types/*.yml",
           "toc.yml",
           "*.md"
         ]
       }
     ],
-    "resource": [
+ 	"xrefService": [ "https://learn.microsoft.com/api/xref/query?uid={uid}" ],
+	"xref" : [ "xref/newtonsoft.yml" ],
+  "resource": [
       {
         "files": [
           "images/**",
           "dataminer-overview/images/**",
           "user-guide/images/**",
+          "release-notes/images/**",
           "develop/images/**",
-		  "develop/schemadoc/Protocol/images/**",
+          "tutorials/images/**",
+          "develop/schemadoc/Protocol/images/**",
 		  "develop/schemadoc/Automation/images/**"
         ]
       }
     ],
-	"overwrite": "overwrite/*.md",
+  	"overwrite": "overwrite/*.md",
     "dest": "_site",
     "globalMetadata": {
       "_appTitle": "DataMiner Docs",
-      "_appFooter": "© Skyline Communications 2022",
-      "_enableSearch": true,
+      "_appFooter": "© Skyline Communications 2023",
+      "_enableSearch": false,
       "_enableNewTab": true
     },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
       "default",
-      "templates/slc_template"
+      "templates/skyfx"
     ],
-    "postProcessors": [ "ExtractSearchIndex" ],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,
     "keepFileLink": false,

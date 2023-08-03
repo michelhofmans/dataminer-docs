@@ -13,8 +13,8 @@ In a Visio drawing, you can position shapes in a grid layout. This allows you to
 
 > [!TIP]
 >
-> - See also: <https://community.dataminer.services/video/dataminer-inspire-advanced-visual-overview-features/>
-> - For an example, see [Ziine](xref:ZiineDemoSystem) > *[Linking Shapes]* view > *[positioning > GRID]* page.
+> - See also: [DataMiner Inspire – Advanced Visual Overview Features](https://community.dataminer.services/video/dataminer-inspire-advanced-visual-overview-features/) ![Video](~/user-guide/images/video_Duo.png)
+> - For an example, see [Ziine](xref:ZiineDemoSystem) > *Visual Overview Design Examples* view > *[positioning > GRID]* page.
 
 ## Configuring the shape data fields
 

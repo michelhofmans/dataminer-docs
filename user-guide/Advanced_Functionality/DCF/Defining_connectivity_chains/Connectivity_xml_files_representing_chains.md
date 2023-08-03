@@ -125,6 +125,28 @@ A *\<Link>* tag can have the following attributes:
 
   - “*physicalMatching*”: Physical link between two internal connections of the same element.
 
+  Example:
+
+  ```xml
+  <Links>
+  <Link itemA="ALCALTEL" itemb="ALCALTEL" itemRelation="internalMatching" type="protocol">
+  ...
+  </Link>
+  <Link itemA="ALCALTEL" itemb="ALCALTEL" itemRelation="externalMatching" type="protocol">
+  ...
+  </Link>
+  <Link itemA="ALCALTEL" itemb="ALCALTEL" itemRelation="physicalMatching" type="protocol">
+  ...
+  </Link>
+  <Link itemA="ALCALTEL" itemb="DCM" itemRelation="externalMatching" type="protocol">
+  ...
+  </Link>
+  <Links>
+  ```
+
+  > [!NOTE]
+  > When itemA and itemB are equal, you need to define an itemRelation.
+
 - **type**
 
   This attribute can have the following values:
@@ -134,7 +156,9 @@ A *\<Link>* tag can have the following attributes:
   - “*Service*”
 
   > [!NOTE]
-  > The type of the first link of a chain, i.e. the entry point, should always be “Service”.
+  >
+  > - The type of the first link of a chain, i.e. the entry point, should always be “Service”.
+  > - If itemA and itemB are both specified, always add `type="protocol"`.
 
 - **includeValueInContext**
 
@@ -145,28 +169,25 @@ A *\<Link>* tag can have the following attributes:
 
 - **hop**
 
-  Available from DataMiner 9.5.2 onwards.
+  This attribute should be set to a number, to indicate the position of this particular connection in the connectivity path. For example, in case of a chain like ElementA \> ElementB \> ElementC \> ElementD, in the corresponding *\<Link>* tags, the hops are configured as 1 > 2 > 3 > 4.
 
-  This attribute should be set to a number, to indicate the position of this particular connection in the connectivity path. For example, in case of a chain like ElementA \> ElementB \> ElementC \> ElementD, in the corresponding *\<Link>* tags, the hops are configured as 1 > 2 > 3 > 4.     For an example, refer to [Example of Connectivity.xml files representing a chain](#example-of-connectivityxml-files-representing-a-chain).
+  For an example, refer to [Example of Connectivity.xml files representing a chain](#example-of-connectivityxml-files-representing-a-chain).
 
 ### \<Map> tag
 
-Inside a *\<Link>* tag, you can add a number of *\<Map>* tags, in which you can look up and compare properties of internal connections. If all *\<Map>* tag comparisons inside a *\<Link>* are “true”, then the internal connections in question will be linked.
-
-> [!NOTE]
-> Up to DataMiner version 9.0.1, only one map is checked for a link of type “Service”.
+Inside a *\<Link>* tag, you can add a number of *\<Map>* tags, in which you can look up and compare properties of internal connections. If all *\<Map>* tag comparisons inside a *\<Link>* are “true”, the internal connections in question will be linked.
 
 A *\<Map>* tag can have the following attributes:
 
 - **propertyA** / **propertyB**
 
-  If you want to compare the values of two properties, then *propertyA* and *propertyB* must contain the names of the two properties of which the values will be compared.
+  If you want to compare the values of two properties, *propertyA* and *propertyB* must contain the names of the two properties of which the values will be compared.
 
   If you want to compare the value of a property to a given value, then either *propertyA* or *propertyB* must contain the name of the property.
 
   > [!NOTE]
   >
-  > - From DataMiner 9.0.0 CU3 onwards, the *propertyB* attribute is no longer mandatory.
+  > - The *propertyB* attribute is not mandatory.
   > - While resolving multiple external connections on the same interface is supported from DataMiner 9.5.5 onwards, matching property connections on external connections is currently not yet supported.
 
 - **match**

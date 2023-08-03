@@ -11,8 +11,8 @@ A shape can be stretched across the entire card surface.
 
 > [!TIP]
 >
-> - See also: <https://community.dataminer.services/video/visio-adding-a-background/>
-> - For an example, see [Ziine](xref:ZiineDemoSystem) > *[Linking Shapes]* view > *[positioning > STRETCH]* page.
+> - See also: [Visio – Adding a background](https://community.dataminer.services/video/visio-adding-a-background/) ![Video](~/user-guide/images/video_Duo.png)
+> - For an example, see [Ziine](xref:ZiineDemoSystem) > *Visual Overview Design Examples* view > *[positioning > STRETCH]* page.
 
 ## Configuring the shape data field
 

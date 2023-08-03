@@ -6,9 +6,9 @@ uid: DataMiner_Cube_tips_tricks
 
 This section lists tips and tricks on how to use DataMiner Cube, including the tips displayed on the DataMiner Pulse homepage.
 
-### About alarms
+## About alarms
 
-- Too many alarms in your Alarm Console? Adding conditions in the alarm template can help you reduce unnecessary alarms. See [Using conditions in an alarm template](xref:Configuring_alarm_templates#using-conditions-in-an-alarm-template).
+- Too many alarms in your Alarm Console? Adding conditions in the alarm template can help you reduce unnecessary alarms. See [Using conditions in an alarm template](xref:Using_conditions_in_an_alarm_template).
 
 - You can drag and drop an element, service or view to the Alarm Console to instantly create an alarm tab linked to it. See [Applying an alarm filter by dragging an item onto the Alarm Console](xref:ApplyingAlarmFiltersInTheAlarmConsole#applying-an-alarm-filter-by-dragging-an-item-onto-the-alarm-console).
 
@@ -31,7 +31,7 @@ This section lists tips and tricks on how to use DataMiner Cube, including the t
 
 - Want to make sure an alarm only shows in the Alarm Console if it has been active for a while, instead of just for a couple of seconds? Use the *Delay* option. See [Alarm Console settings](xref:AlarmConsoleSettings).
 
-### About shortcuts
+## About shortcuts
 
 - Would you prefer to display the Cube sidebar on the right? Press Ctrl+Alt+Shift+Right arrow. Want to put it back on the left? Use the same key combination, but with the Left arrow key.
 
@@ -43,7 +43,7 @@ This section lists tips and tricks on how to use DataMiner Cube, including the t
 
 - Need help? Press F1. See [Using keyboard navigation](xref:Using_keyboard_navigation).
 
-### About workspaces
+## About workspaces
 
 - Want to quickly open a new element in an existing card? Drag the element from the Surveyor onto the card header. See [Dragging cards](xref:Working_with_cards_in_DataMiner_Cube#dragging-cards).
 
@@ -55,7 +55,7 @@ This section lists tips and tricks on how to use DataMiner Cube, including the t
 
 - Workspaces can also contain alarm tab pages. Just drag the tabs you want out of the Alarm Console, and click *Dock to workspace* in the top right corner.
 
-### About the Surveyor
+## About the Surveyor
 
 - Did you know that you can drag views, elements, services and SLAs directly from DataMiner Cube onto emails or open documents? You can do this from the Surveyor, but also from a view card data page or from a Visual Overview. See [Surveyor](xref:Main_Cube_UI_components_prior_to_DataMiner_10#surveyor).
 
@@ -65,9 +65,9 @@ This section lists tips and tricks on how to use DataMiner Cube, including the t
 
 - Would you like to have certain elements, views, services or apps easily available? Pin them in the recent activity list (also available in the Monitoring app). [Recent items](xref:Main_Cube_UI_components_prior_to_DataMiner_10#recent-items).
 
-- Do you want to move several elements from one view to another? Select them on the source view card and drag them to the target view in the Surveyor in drag-and-drop editing mode.
+- Do you want to copy several elements from one view to another? Select them on the source view card and drag them to the target view in the Surveyor in drag-and-drop editing mode.
 
-### About trending
+## About trending
 
 - To quickly add more parameters to a trend graph, drag an element from the Surveyor and drop it onto the graph. Configure which parameters to add in the pane at the bottom. See [Accessing trend information from the Trending module](xref:Accessing_trend_information_from_the_Trending_module).
 
@@ -75,9 +75,9 @@ This section lists tips and tricks on how to use DataMiner Cube, including the t
 
 - Have you made a complicated trend graph with multiple parameters, and would you like to easily retrieve it again later? Save it as a trend group. See [Working with trend groups](xref:Working_with_trend_groups).
 
-### Miscellaneous
+## Miscellaneous
 
-- If you specify startup options in the DataMiner Cube URL, you can make Cube display a particular view or app on startup – and you can do even much more than that! See [Options for opening DataMiner Cube](xref:Options_for_opening_DataMiner_Cube).
+- With the advanced options to open a DMS from the Cube start window, you can customize which view or app is initially shown – and you can do even much more than that! See [Arguments for DataMiner Cube](xref:Options_for_opening_DataMiner_Cube).
 
 - Want to get alerts for a particular element, service or view? Right-click it in the Surveyor and select *Actions* > *Alert me*. See [Configuring notifications directly from the Alarm Console or Surveyor](xref:Configuring_notifications_directly_from_the_Alarm_Console_or_Surveyor).
 

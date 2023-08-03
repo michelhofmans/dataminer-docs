@@ -9,7 +9,7 @@ Using a shape data field of type **Link**, you can link a shape to a webpage.
 When you link a shape to a webpage, that page will be opened each time a user clicks that shape.
 
 > [!TIP]
-> For an example, see [Ziine](xref:ZiineDemoSystem) > *[Linking Shapes]* view > *[linking > WEB]* page.
+> For an example, see [Ziine](xref:ZiineDemoSystem) > *Visual Overview Design Examples* view > *[linking > WEB]* page.
 
 ## Configuring the shape data field
 
@@ -80,6 +80,7 @@ From DataMiner 10.1.11/10.2.0 onwards, you can use Microsoft Edge (WebView2) to 
 >
 > - The WebView2 Runtime is automatically installed with Office 365 Apps and/or Windows 11. It is not included in DataMiner upgrade packages.
 > - This browser engine has the advantage that web content is rendered directly to the graphics card and proprietary codecs such as H.264 and AAC are supported. In addition, the browser engine automatically receives updates via Windows Update, regardless of the DataMiner or Cube version.
+> - From DataMiner 10.3.4/10.4.0 onwards, interactions between DataMiner web apps and Cube (e.g. a web app opening an element card in Cube) now also work when those web apps are embedded in Microsoft Edge (WebView2). Prior to DataMiner 10.3.4/10.4.0, this functionality is already supported when [Chromium](#usechrome) is used to display web apps. <!-- RN 35655 -->
 
 ### UseLoginCredentials
 
@@ -112,17 +113,18 @@ http://localhost/foo/test.php?id=123&action=save#SL_ALLOW_POPUPS#
 | \<ElementIP> | Polling IP address of the element |
 | \<ElementName> | Name of the element |
 | \<DataMinerID> | DataMiner ID |
-| \<DMAIP> | The certificate address, hostname or IP address of the DataMiner Agent to which the user is connected. See [\<DMAIP>](xref:Placeholders_for_variables_in_shape_data_values#dmaip) |
-| \<PageFilter> | Value of the drop-down filter box in the top-right corner of the Visio drawing.<br>See [Specifying an EPM parameter that can be used to filter](xref:Specifying_an_EPM_parameter_that_can_be_used_to_filter). |
+| \<DMAIP> | The certificate address, hostname or IP address of the DataMiner Agent to which the user is connected. See [\<DMAIP>](xref:Placeholders_for_variables_in_shape_data_values#dmaip). |
+| \<PageFilter> | Value of the drop-down filter box in the top-right corner of the Visio drawing. See [Specifying an EPM parameter that can be used to filter](xref:Specifying_an_EPM_parameter_that_can_be_used_to_filter). |
 
 > [!NOTE]
 >
 > - \<ElementID>, \<ElementIP> and \<ElementName> are only to be used if the shape is also linked to an element.
-> - From DataMiner version 9.0.5 onwards, these placeholders can also be used inside another placeholder in the URL, e.g. *#http://www.skyline.be?MyParam=\[param:\<elementname>,1\]*
+> - From DataMiner version 9.0.5 onwards, these placeholders can also be used inside another placeholder in the URL, e.g. `#http://www.skyline.be?MyParam=[param:<elementname>,1]`
+> - Prior to DataMiner 10.3.6/10.4.0, adding a URL fragment to a linked webpage causes the connection info to be automatically added after the fragment, rendering the URL invalid and requiring a reload of the page, which means the user may need to log in again. From DataMiner 10.3.6/10.4.0 onwards, Visual Overview can recognize if a URL fragment is added or changed and update only the necessary parts of the page, avoiding the need to recreate the browser instance. <!-- RN 36044 + 36104 -->
 
-## Configuring a link to a DataMiner element or view within a webpage embedded in Visual Overview
+## Configuring a link to a DataMiner object within a webpage embedded in Visual Overview
 
-From DataMiner 9.5.2 onwards, within a webpage displayed in Visual Overview via a shape data field of type **Link**, you can create a link that will allow the user to navigate to a particular DataMiner element or view.
+Within a webpage displayed in Visual Overview via a shape data field of type **Link**, you can create a link that will allow the user to navigate to a particular DataMiner element or view. From DataMiner 10.2.9/10.3.0 onwards, you can also create a link to an EPM object based on its system name and system type.
 
 To do so, use the following configuration in the webpage:
 
@@ -140,6 +142,20 @@ To do so, use the following configuration in the webpage:
   <a href='javascript:window.external.NavigateElementByName("My Element Name");'>
     My link description
   </a>
+  ```
+
+- For a link to an EPM object:
+
+  ```xml
+  <a href='javascript:window.external.NavigateCPEByName("[system type]", "[system name]");'>
+    My link description
+  </a>
+  ```
+
+  For example:
+
+  ```xml
+  <a href='javascript:window.external.NavigateCPEByName("Region","California");'>Open Region California</a>
   ```
 
 ## Examples

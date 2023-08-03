@@ -9,7 +9,7 @@ If you used a shape data field of type **ParameterControl** to turn a shape into
 > [!TIP]
 >
 > - See also: [Turning a shape into a parameter control](xref:Turning_a_shape_into_a_parameter_control)
-> - For an example, see [Ziine](xref:ZiineDemoSystem) > *[Linking Shapes]* view > *[controls > PARAM]* page.
+> - For an example, see [Ziine](xref:ZiineDemoSystem) > *Visual Overview Design Examples* view > *[controls > PARAM]* page.
 
 ## Configuring the shape data field
 
@@ -122,16 +122,17 @@ When you turn a shape into a parameter control of type "Lite" (see below), you c
 Example:
 
 ```txt
-IncludeWrite|Lite|CustomColors:text=#0000FF,text.disabled=#8888FF,text.titlesuffix=#FF0000, bg.hover=#FFFF00,bg.hovereditor=#66FF66
+IncludeWrite|Lite|CustomColors:text=#0000FF,text.disabled=#8888FF,text.titlesuffix=#FF0000,bg.hover=#FFFF00,bg.hovereditor=#66FF66,bg.pressededitor=#4cc74c
 ```
 
-| Color definition | Description                                                                                     |
-| ---------------- | ----------------------------------------------------------------------------------------------- |
-| text             | The color of the default text.                                                                  |
-| text.disabled    | The color of the text when the value is "not initialized".                                      |
-| text.titlesuffix | The color of the table index suffix in the title.                                               |
-| bg.hover         | The color of the background when hovering the mouse cursor over the control.                    |
-| bg.hovereditor   | The color of the background when hovering the mouse cursor over the editor part of the control. |
+| Color definition | Description                                                                                                          |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
+| text             | The color of the default text.                                                                                       |
+| text.disabled    | The color of the text when the value is "not initialized".                                                           |
+| text.titlesuffix | The color of the table index suffix in the title.                                                                    |
+| bg.hover         | The color of the background when hovering the mouse cursor over the control.                                         |
+| bg.hovereditor   | The color of the background when hovering the mouse cursor over the editor part of the control.                      |
+| bg.pressededitor | As of DataMiner 10.3.9/10.4.0<!-- RN 36779 -->, the color of the background when the left mouse button is pressed within the editor part of the control. |
 
 > [!NOTE]
 >
